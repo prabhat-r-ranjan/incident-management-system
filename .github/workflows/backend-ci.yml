@@ -43,3 +43,4 @@ jobs:
         if: github.event_name == 'push'
         run: |
           docker push $REGISTRY/$IMAGE_NAME:${{ github.sha }}
+          # Hi
