@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: incident-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: incident-backend
+  template:
+    metadata:
+      labels:
+        app: incident-backend
+    spec:
+      containers:
+        - name: incident-backend
+          image: prabhatcr001.azurecr.io/incident-backend:71f6050e92a25d279a98a47ae42fccc12828f583
+          ports:
+            - containerPort: 8081
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres:5432/incidentdb
+            - name: SPRING_DATASOURCE_USERNAME
+              value: incidentuser
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: incidentpass
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: incident-backend
+spec:
+  selector:
+    app: incident-backend
+  ports:
+    - port: 8081
+      targetPort: 8081
+  type: LoadBalancer
