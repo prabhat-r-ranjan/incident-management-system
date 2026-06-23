@@ -8,3 +8,4 @@ resources:
   - backend-deployment.yaml
   - backend-service.yaml
   - backend-configmap.yaml
+  - backend-secret.yaml

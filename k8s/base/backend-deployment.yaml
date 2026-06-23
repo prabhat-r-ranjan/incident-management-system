@@ -24,6 +24,12 @@ spec:
                   name: incident-backend-config
                   key: SPRING_DATASOURCE_URL
             - name: SPRING_DATASOURCE_USERNAME
-              value: incidentuser
+              valueFrom:
+                secretKeyRef:
+                  name: incident-backend-secret
+                  key: SPRING_DATASOURCE_USERNAME
             - name: SPRING_DATASOURCE_PASSWORD
-              value: incidentpass
+              valueFrom:
+                secretKeyRef:
+                  name: incident-backend-secret
+                  key: SPRING_DATASOURCE_PASSWORD
