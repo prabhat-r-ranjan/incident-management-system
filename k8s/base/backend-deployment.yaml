@@ -19,7 +19,10 @@ spec:
             - containerPort: 8081
           env:
             - name: SPRING_DATASOURCE_URL
-              value: jdbc:postgresql://postgres:5432/incidentdb
+              valueFrom:
+                configMapKeyRef:
+                  name: incident-backend-config
+                  key: SPRING_DATASOURCE_URL
             - name: SPRING_DATASOURCE_USERNAME
               value: incidentuser
             - name: SPRING_DATASOURCE_PASSWORD
