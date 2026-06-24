@@ -6,6 +6,7 @@ spec:
   selector:
     app: incident-backend
   ports:
-    - port: 8081
+    - name: http
+      port: 8081
       targetPort: 8081
   type: ClusterIP

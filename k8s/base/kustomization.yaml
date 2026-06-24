@@ -9,3 +9,4 @@ resources:
   - backend-service.yaml
   - backend-configmap.yaml
   - backend-secret.yaml
+  - backend-servicemonitor.yaml
