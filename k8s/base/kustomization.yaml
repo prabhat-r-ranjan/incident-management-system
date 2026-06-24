@@ -10,3 +10,4 @@ resources:
   - backend-configmap.yaml
   - backend-secret.yaml
   - backend-servicemonitor.yaml
+  - backend-hpa.yaml
