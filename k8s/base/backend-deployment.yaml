@@ -33,3 +33,10 @@ spec:
                 secretKeyRef:
                   name: incident-backend-secret
                   key: SPRING_DATASOURCE_PASSWORD
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
