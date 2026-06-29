@@ -11,3 +11,4 @@ resources:
   - backend-secret.yaml
   - backend-servicemonitor.yaml
   - backend-hpa.yaml
+  - postgres-pvc.yaml
