@@ -18,46 +18,46 @@ spec:
         app: incident-backend
     spec:
       containers:
-        - name: incident-backend
-          image: prabhatcr001.azurecr.io/incident-backend:wrongtag
-          ports:
-            - containerPort: 8081
-          env:
-            - name: SPRING_DATASOURCE_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: incident-backend-config
-                  key: SPRING_DATASOURCE_URL
-            - name: SPRING_DATASOURCE_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: incident-backend-secret
-                  key: SPRING_DATASOURCE_USERNAME
-            - name: SPRING_DATASOURCE_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: incident-backend-secret
-                  key: SPRING_DATASOURCE_PASSWORD
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "256Mi"
-            limits:
-              cpu: "500m"
-              memory: "512Mi"
-          readinessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8081
-            initialDelaySeconds: 20
-            periodSeconds: 10
-            timeoutSeconds: 3
-            failureThreshold: 3
-          livenessProbe:
-            httpGet:
-              path: /actuator/health
-              port: 8081
-            initialDelaySeconds: 60
-            periodSeconds: 20
-            timeoutSeconds: 3
-            failureThreshold: 3
+      - name: incident-backend
+        image: prabhatcr001.azurecr.io/incident-backend:7fd97a64932c3f02181129b0013cfd2b8fedf322
+        ports:
+        - containerPort: 8081
+        env:
+        - name: SPRING_DATASOURCE_URL
+          valueFrom:
+            configMapKeyRef:
+              name: incident-backend-config
+              key: SPRING_DATASOURCE_URL
+        - name: SPRING_DATASOURCE_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: incident-backend-secret
+              key: SPRING_DATASOURCE_USERNAME
+        - name: SPRING_DATASOURCE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: incident-backend-secret
+              key: SPRING_DATASOURCE_PASSWORD
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 500m
+            memory: 512Mi
+        readinessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8081
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 3
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /actuator/health
+            port: 8081
+          initialDelaySeconds: 60
+          periodSeconds: 20
+          timeoutSeconds: 3
+          failureThreshold: 3
