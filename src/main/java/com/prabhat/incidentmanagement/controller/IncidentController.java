@@ -11,7 +11,10 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/incidents")
-@CrossOrigin(origins = "*")
+// @CrossOrigin(
+//     originPatterns = "*",
+//     allowCredentials = "true"
+// )
 public class IncidentController {
 
     private final IncidentRepository repository;
