@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: incident-backend
-        image: prabhatcr001.azurecr.io/incident-backend:87eb1ab0cf1ac3bd767f95e21f5860a780a08927
+        image: prabhatcr001.azurecr.io/incident-backend:wrongtag
         ports:
         - containerPort: 8081
         env:
