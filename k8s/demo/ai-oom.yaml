@@ -1,0 +1,30 @@
+# k8s/demo/ai-oom.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-oom
+  namespace: demo-incidents
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-oom
+  template:
+    metadata:
+      labels:
+        app: demo-oom
+    spec:
+      containers:
+      - name: app
+        image: python:3.9-slim
+        command: ["python", "-c"]
+        args:
+          - |
+            import time
+            x = []
+            while True:
+                x.append([1] * 1000000)
+                time.sleep(0.1)
+        resources:
+          limits:
+            memory: "50Mi"  # ❌ Intentionally low
