@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
   - imagepull.yaml
   - healthy.yaml
+  - ai-oom.yaml
